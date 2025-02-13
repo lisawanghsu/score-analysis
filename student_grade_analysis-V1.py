@@ -83,6 +83,8 @@ def manual_input(key=1):
         st.write("手动输入的成绩数据核对：",'待确认人数：',len(data))
         st.write(df)
         return df
+    else:
+        return pd.DataFrame()
 
     
 st.header("功能一：卷面成绩分析")
