@@ -103,10 +103,14 @@ if uploaded_file is not None:
             st.write(f"{questiontype}最高分为：{df[questiontype].max()}，最低分为：{df[questiontype].min()}，平均分为：{df[questiontype].mean().round(1)}")
 
 # 手动输入卷面成绩
+
 df = manual_input()
-st.write("### 各题型最高分、最低分、平均分统计")
-for questiontype in df.columns[0:]:
-    st.write(f"{questiontype}最高分为：{df[questiontype].max()}，最低分为：{df[questiontype].min()}，平均分为：{df[questiontype].mean().round(1)}")
+
+
+if df:
+    st.write("### 各题型最高分、最低分、平均分统计")
+    for questiontype in df.columns[0:]:
+        st.write(f"{questiontype}最高分为：{df[questiontype].max()}，最低分为：{df[questiontype].min()}，平均分为：{df[questiontype].mean().round(1)}")
 
 st.markdown('---')
 
@@ -129,10 +133,12 @@ if uploaded_file is not None:
 
 # 手动输入期末成绩和总评成绩
 df = manual_input(key=2)
-for i in df.columns:
-    grades = calculate_grade_distribution(df, i)
-    st.write(f"{i}各分数段统计如下：")
-    levels = '90-100\t80-89\t70-79\t60-69\t50-59\t40-49\t30-39\t20-29\t10-19\t0-9'.split('\t')
-    # st.write(pd.DataFrame([levels, grades], index=['分数段', '人数']).T.set_index('分数段'))
-    st.write(pd.DataFrame([grades], columns=levels, index=['人数']))        
+if df:
+        
+    for i in df.columns:
+        grades = calculate_grade_distribution(df, i)
+        st.write(f"{i}各分数段统计如下：")
+        levels = '90-100\t80-89\t70-79\t60-69\t50-59\t40-49\t30-39\t20-29\t10-19\t0-9'.split('\t')
+        # st.write(pd.DataFrame([levels, grades], index=['分数段', '人数']).T.set_index('分数段'))
+        st.write(pd.DataFrame([grades], columns=levels, index=['人数']))        
 
