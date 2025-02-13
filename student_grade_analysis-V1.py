@@ -107,7 +107,7 @@ if uploaded_file is not None:
 df = manual_input()
 
 
-if df:
+if df.size:
     st.write("### 各题型最高分、最低分、平均分统计")
     for questiontype in df.columns[0:]:
         st.write(f"{questiontype}最高分为：{df[questiontype].max()}，最低分为：{df[questiontype].min()}，平均分为：{df[questiontype].mean().round(1)}")
@@ -133,7 +133,7 @@ if uploaded_file is not None:
 
 # 手动输入期末成绩和总评成绩
 df = manual_input(key=2)
-if df:
+if df.size:
         
     for i in df.columns:
         grades = calculate_grade_distribution(df, i)
