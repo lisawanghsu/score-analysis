@@ -93,7 +93,7 @@ st.header("功能一：卷面成绩分析")
 st.subheader("请上传卷面成绩文件")
 uploaded_file = st.file_uploader("选择卷面成绩文件（CSV格式）", type="csv")
 if uploaded_file is not None:
-    header = st.selectbox('选择第几行为表格标题行（一般为第0行）', list(range(5)),key=1)
+    header = st.selectbox('选择第几行为表格标题行（一般为第0行）', list(range(5)),key=10)
     
     df = pd.read_csv(uploaded_file, header=header, encoding='gbk')
     st.write("文件预览：")
@@ -121,7 +121,7 @@ st.header("功能二：期末和总评成绩分析")
 # 上传期末成绩和总评成绩文件
 uploaded_file = st.file_uploader("选择期末和总评成绩文件（CSV格式）", type="csv")
 if uploaded_file is not None:
-    header2 = st.selectbox('选择第几行为表格标题行（一般为第0行）', list(range(5)),key=2)
+    header2 = st.selectbox('选择第几行为表格标题行（一般为第0行）', list(range(5)),key=12)
     df = pd.read_csv(uploaded_file, header=header2, encoding='utf-8')
     st.write("文件预览：")
     st.write(df.head())
